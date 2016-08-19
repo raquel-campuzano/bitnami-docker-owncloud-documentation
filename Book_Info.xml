@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE bookinfo PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+<!ENTITY % BOOK_ENTITIES SYSTEM "manual.ent">
+<!ENTITY PRODUCT "Documentation">
+<!ENTITY BOOKID "manual">
+<!ENTITY YEAR "2016">
+<!ENTITY HOLDER "Bitnami. |">
+]>
+<bookinfo id="Installation_guide">
+  <title>Installation Guide</title>
+  <productname>Bitnami ownCloud solution with Docker</productname>
+  <productnumber>9</productnumber>
+  <edition>1</edition>
+  <pubsnumber>0</pubsnumber>
+  <abstract>
+    <para>ISBN: Unavailable</para>
+    <para>This material may be distributed only under the terms and conditions set forth in the Open Publication License v1.0 (the latest version is available at http://www.opencontent.org/openpub/).</para>
+    <para>The distribution of modified versions of this document is prohibited without the explicit permission of owner of the copyright.</para>
+    <para>The product distribution or copy in book form for commercial purposes is prohibited unless prior permission is obtained in writing from those of copyright.</para>
+    <para>All trademarks and copyrights on those references are property of their respective owners.</para>
+    <para>
+      <important>
+        <title>Bitnami</title>
+        <address>
+          <street>650 Mission St, 3rd Floor</street>
+          <city>San Francisco</city>
+          <state>California</state>
+          <postcode>94105</postcode>
+          <phone></phone>
+          <country>United States</country>
+          <email></email> 
+        </address>
+      </important>
+    </para>
+  </abstract>
+  <corpauthor>
+    <inlinemediaobject>
+      <imageobject>
+        <imagedata scalefit="1" align="center" width="150" fileref="images/logo.png"/>
+      </imageobject>
+    </inlinemediaobject>
+  </corpauthor>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="Author_Group.xml"/>
+</bookinfo>

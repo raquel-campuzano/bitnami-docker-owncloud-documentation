@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+<!ENTITY % BOOK_ENTITIES SYSTEM "manual.ent">
+<!ENTITY PRODUCT "Documentation">
+<!ENTITY BOOKID "manual">
+<!ENTITY YEAR "2016">
+<!ENTITY HOLDER "Bitnami. |">
+]>
+<chapter>
+	
+	<title>Configuring ownCloud Sync Clients</title>
+	<para>The ownCloud Sync Clients allows you to synchronize your local machine with your ownCloud application. 
+	Files on your ownCloud are automatically the same as the ones on the local disk.</para> 
+	<para>Following these simple steps you can have all your data both in your personal devices and in the cloud.</para>
+	
+	<orderedlist numeration="arabic">
+		<listitem>
+			<para>Download the client available for your Operating System. Get it at <ulink url="http://owncloud.org/sync-clients/"></ulink></para>
+			
+			<mediaobject>
+		<imageobject>
+			<imagedata scalefit="1" align="center" width="350" fileref="images/ch04_img001.png"/>
+		</imageobject>
+		<caption>
+			<para>Downloading ownCloud Windows Client</para>
+		</caption>
+	</mediaobject>
+	
+	<mediaobject>
+		<imageobject>
+			<imagedata scalefit="1" align="center" width="350" fileref="images/ch04_img002.png"/>
+		</imageobject>
+		<caption>
+			<para>Selecting your OS version</para>
+		</caption>
+	</mediaobject>
+	
+		</listitem>
+		<listitem>
+			<para>Execute the .exe file and start the installation wizard.</para>
+			
+		<mediaobject>
+			<imageobject>
+				<imagedata scalefit="1" align="center" width="350" fileref="images/ch03_img003.png"/>
+			</imageobject>
+			<caption>
+				<para>ownCloud Components selection</para>
+			</caption>
+		</mediaobject>
+		
+		</listitem>
+		
+		<listitem>
+			<para>Finish all the steps and create an ownCloud connection by entering the URL/ IP Address of the machine where 
+			you installed the Bitnami ownCloud stack.</para>
+			<para>http://your_ip_address:8080/owncloud</para>
+			
+			<mediaobject>
+				<imageobject>
+					<imagedata scalefit="1" align="center" width="350" fileref="images/ch03_img006.png"/>
+				</imageobject>
+				<caption>
+					<para>Configuring ownCloud server</para>
+				</caption>
+			</mediaobject>
+		
+		</listitem>
+		<listitem>
+			<para>A folder in your system is created. Every file you add into this folder will be syncronize with your ownCloud application. 
+			It is ususally located in <keycap>%SystemRoot%\Users\pcname\app data\local\owncloud</keycap></para>
+		</listitem>
+	</orderedlist>
+	
+	<mediaobject>
+		<imageobject>
+			<imagedata scalefit="1" align="center" width="350" fileref="images/ch03_img0011.png"/>
+		</imageobject>
+		<caption>
+			<para>owCloud local folder</para>
+		</caption>
+	</mediaobject>
+
+</chapter>

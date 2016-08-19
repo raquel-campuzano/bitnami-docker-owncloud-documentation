@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+<!ENTITY % BOOK_ENTITIES SYSTEM "manual.ent">
+<!ENTITY PRODUCT "Documentation">
+<!ENTITY BOOKID "manual">
+<!ENTITY YEAR "2016">
+<!ENTITY HOLDER "Bitnami. |">
+]>
+<chapter>
+	
+	<title>Getting starting with ownCloud</title>
+	<para>Once you have updated the containers you can access the application typing the IP Address in your browser. 
+	You will see the login interface. Usethe default user and password <literal>user/ bitnami.</literal></para> 
+	
+	<mediaobject>
+		<imageobject>
+			<imagedata scalefit="1" align="center" width="350" fileref="images/ch03_img001.png"/>
+		</imageobject>
+		<caption>
+			<para>owCloud login screen</para>
+		</caption>
+	</mediaobject>
+		
+	<para>the ownCloud Web interface opens to your Files page. You can add, remove, and share files, and make changes 
+	based on the access privileges you have. (In this case as server administrator).</para>
+	
+	<mediaobject>
+		<imageobject>
+			<imagedata scalefit="1" align="center" width="350" fileref="images/ch03_img002.png"/>
+		</imageobject>
+		<caption>
+			<para>owCloud main user interface</para>
+		</caption>
+	</mediaobject>
+	
+	<section>
+		
+		<title>Options and fuctions in the ownCloud main user interface</title>
+		<para>In the main user interface you can find the following areas for navigating ownCloud:</para>
+		
+		<itemizedlist mark="bullet">
+			<listitem>
+				<para>
+					<emphasis role="bold">Files options menu:</emphasis> You can find it in the upper left menu. Click the arrow
+				to see the options availables.
+				</para>
+				<para>
+					-Favourites
+				</para>
+				<para>
+					-Shared with you
+				</para>
+				<para>
+					-Shared with others
+				</para>
+				<para>
+					-Shared by links
+				</para>
+				<para>
+					-Tags
+				</para>
+			</listitem>
+			<listitem>
+				<para>
+					<emphasis role="bold">Application Settings:</emphasis> In the bottom left menu you can access to the application settings and 
+				to the list of deleted files. 
+				</para>
+			</listitem>
+			<listitem>
+				<para>
+					<emphasis role="bold">Folders and files:</emphasis> The main central area displays all the items and user features.
+				</para>		
+			</listitem>
+			<listitem>
+				<para>
+					<emphasis role="bold">Navigation menu:</emphasis> Located at top margin it includes the following options.
+					<para><literal>-new</literal> button: enables you to create new files, new folders, or upload files</para> 
+					<para>Gallery button: four squares icon that enables you to display your images gallery.</para>  
+				</para>
+			</listitem>
+			<listitem>
+				<para>
+					<emphasis role="bold">Search field:</emphasis> Located at top right margin, allows you to search files quickly.
+				</para>
+			</listitem>
+			<listitem>
+				<para>
+					<emphasis role="bold">User settings:</emphasis> Open the dropdown menu for display your personal settings. 
+					This menu contains the following settings and features:
+				</para>
+				<para>-Personal: you can set your personal info, sync clients, user and application passwords and monitoring your 
+				recent activity and sessions.</para>
+				<para>-Users: select this option for creating new groups and configuring their credentials and storage quota amongst 
+				other actions.</para>
+				<para>-Help</para>
+				<para>-Admin: here you can view your security and setup warnings.</para>
+				<para>-Log Out: click here to log out the application.</para>
+			</listitem>
+		</itemizedlist>
+		
+		<mediaobject>
+			<imageobject>
+				<imagedata scalefit="1" align="center" width="350" fileref="images/ch03_img003.png"/>
+			</imageobject>
+			<caption>
+				<para>Fields and functions in ownCloud user interface</para>
+			</caption>
+		</mediaobject>
+		
+		<para>The following sections explain how to do the main basic operations in ownCloud such as files and folders creation, 
+		uploadig/ downloading files or change user´s passwords.</para>
+		
+	</section>
+	
+	<section>
+		<title>How to create new folders?</title>
+		<para>You can create folders and new text files both directly from the main user interface and within an existing folder. 
+		You simply must use in both cases the <literal>New</literal> button.</para>
+		<para><emphasis role="bold">Creating a folder in the root directory:</emphasis> click the <literal>new</literal> button and select the 
+		folder option.</para>
+		
+		<mediaobject>
+			<imageobject>
+				<imagedata scalefit="1" align="center" width="350" fileref="images/ch03_img004.png"/>
+			</imageobject>
+			<caption>
+				<para>Creating a new folder in the main user interface</para>
+			</caption>
+		</mediaobject>
+		
+		<para><emphasis role="bold">Creating a new folder inside an existing folder:</emphasis> click on the folder you want to create the 
+		new folder or text file and once you have accessed, click click the <literal>new</literal> button and select the 
+		folder option.</para>
+		
+		<mediaobject>
+			<imageobject>
+				<imagedata scalefit="1" align="center" width="350" fileref="images/ch03_img005.png"/>
+			</imageobject>
+			<caption>
+				<para>Creating a new folder inside an existing folder</para>
+			</caption>
+		</mediaobject>
+			
+	</section>
+	
+	<section>
+		<title>Uploading and downloading folders and files</title>
+		<para><emphasis role="bold">Uploading files</emphasis>
+		<footnote><para>This option is not available for folder upload. You can compress your folder
+		and upload it as a compressed file into your application.</para></footnote>
+		is very simple in ownCloud. Simply click on <literal>New</literal> button both in
+		the main user interface and inside an existing folder and select the <literal>Upload</literal> option. Select the file from your computer
+		and click Open. It will be automatically added to your application.</para>
+		
+		<mediaobject>
+			<imageobject>
+				<imagedata scalefit="1" align="center" width="350" fileref="images/ch03_img006.png"/>
+			</imageobject>
+			<caption>
+				<para>Uploading files</para>
+			</caption>
+		</mediaobject>
+		
+		<para><emphasis role="bold">Downloading files </emphasis></para>
+		<para>For downloading files you have two options:</para>
+		
+		<orderedlist numeration="arabic">
+		<listitem>
+			<para>Select the item you want to download and then click on the vertical bar with three little circles
+		that is located on the right of each file/ foldername. It opens a dropdown menu: select the <literal>Download</literal> option.</para>
+		</listitem>
+		<listitem>
+			<para>Make a single or a multiple selection clicking the checkbox and select the <literal>Download</literal> option that is located
+			on top of the content list.</para>
+		</listitem>
+		</orderedlist>
+		
+		<mediaobject>
+			<imageobject>
+				<imagedata scalefit="1" align="center" width="350" fileref="images/ch03_img007.png"/>
+			</imageobject>
+			<caption>
+				<para>Downloading files/ folders</para>
+			</caption>
+		</mediaobject>
+		 
+		<note>
+			<title>Note</title>
+			<para>If you are downloading a folder this will be downloaded as a compressed file.</para>	
+		</note>
+	</section>
+	
+	<section>
+		
+		<title>How to share files and folders</title>
+		<para>You can share files with other groups or by getting the local link of each item.</para>
+		<para>Clicking on <literal>Share</literal> icon (on the right of file or foldername) you can introduce the name of the 
+		groups to share it with and also get its local link.</para>
+		
+		<mediaobject>
+			<imageobject>
+				<imagedata scalefit="1" align="center" width="350" fileref="images/ch03_img009.png"/>
+			</imageobject>
+			<caption>
+				<para>Sharing files/ folders</para>
+			</caption>
+		</mediaobject>
+		
+		<note>
+			<title>Note</title>
+			<para>Remember, you can check the files or folders shared with you, shared with others or shared by link
+			in the options you can find in the Files Options Menu.</para>
+		</note>
+		
+		<mediaobject>
+			<imageobject>
+				<imagedata scalefit="1" align="center" width="350" fileref="images/ch03_img010.png"/>
+			</imageobject>
+			<caption>
+				<para>View shared files</para>
+			</caption>
+		</mediaobject>
+		
+	</section>
+	
+	<section>
+		<title>Renaming files and see details</title>
+		<para>You can rename your folders and files at anytime and check the history of the item and other detais as related tags
+		or sharings.</para>
+		<para>Find <literal>Details</literal> and <literal>Rename</literal> options in the dropdown menu beside the folders.</para>
+		
+		<mediaobject>
+			<imageobject>
+				<imagedata scalefit="1" align="center" width="350" fileref="images/ch03_img011.png"/>
+			</imageobject>
+			<caption>
+				<para>Rename and Details options</para>
+			</caption>
+		</mediaobject>
+		
+		<mediaobject>
+			<imageobject>
+				<imagedata scalefit="1" align="center" width="350" fileref="images/ch03_img012.png"/>
+			</imageobject>
+			<caption>
+				<para>Details</para>
+			</caption>
+		</mediaobject>
+	
+	</section>
+    
+    <section>
+		<title>Delete files and folders</title>
+		<para>For deleting files you have two options:</para>
+		
+		<orderedlist numeration="arabic">
+		<listitem>
+			<para>Select the item you want to delete and then click on the vertical bar with three little circles
+		that is located on the right of each file/ foldername. It opens a dropdown menu: select the <literal>Delete</literal> option.</para>
+		</listitem>
+		<listitem>
+			<para>Make a single or a multiple selection clicking the checkbox and select the <literal>Delete</literal> option that is displayed
+		    in the Navigation Menu.</para>
+		</listitem>
+		</orderedlist>
+		
+		<mediaobject>
+			<imageobject>
+				<imagedata scalefit="1" align="center" width="350" fileref="images/ch03_img013.png"/>
+			</imageobject>
+			<caption>
+				<para>Deleting files</para>
+			</caption>
+		</mediaobject>
+		
+		<note>
+			<title>Note</title>
+			<para>You can view all deleted files simply by clicking <literal>Deleted files</literal> option in the Application 
+			Settings Menu.</para>
+			<para>This screen shows you all files that were deleted and gives you the option of recovering them.</para>
+		</note>
+		
+		<mediaobject>
+			<imageobject>
+				<imagedata scalefit="1" align="center" width="350" fileref="images/ch03_img014.png"/>
+			</imageobject>
+			<caption>
+				<para>Recovering files</para>
+			</caption>
+		</mediaobject>
+	
+	</section>
+	
+	<section>
+		<title>How can I change my password?</title>
+		<para>In the <emphasis role="bold">Users Settings Menu</emphasis> you can find the following options: Personal and Users.</para>
+		<para><emphasis>Personal</emphasis> allows you to change your personal password and set your application password.</para>
+		<para><emphasis>Users</emphasis> option enables you to set the Users Groups privileges and also create and change their users and 
+		passwords.</para>
+		
+		<mediaobject>
+			<imageobject>
+				<imagedata scalefit="1" align="center" width="350" fileref="images/ch03_img015.png"/>
+			</imageobject>
+			<caption>
+				<para>Change personal password</para>
+			</caption>
+		</mediaobject>
+		
+		<mediaobject>
+			<imageobject>
+				<imagedata scalefit="1" align="center" width="350" fileref="images/ch03_img016.png"/>
+			</imageobject>
+			<caption>
+				<para>Change Users Group password</para>
+			</caption>
+		</mediaobject>
+	
+	</section>
+	
+	<section>
+		<title>Checking if my version is updated</title>
+		<para>You can check if you currently have the latest stable version of ownCloud in <literal>Users Settings-> Administration.</literal></para>
+		<para>In this section you access to several options for configuring your preferences.</para>
+		
+		<mediaobject>
+			<imageobject>
+				<imagedata scalefit="1" align="center" width="350" fileref="images/ch03_img017.png"/>
+			</imageobject>
+			<caption>
+				<para>Check the latest version of ownCloud</para>
+			</caption>
+		</mediaobject>
+	</section>
+	
+</chapter>

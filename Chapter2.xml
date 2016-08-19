@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+<!ENTITY % BOOK_ENTITIES SYSTEM "manual.ent">
+<!ENTITY PRODUCT "Documentation">
+<!ENTITY BOOKID "manual">
+<!ENTITY YEAR "2016">
+<!ENTITY HOLDER "Bitnami. |">
+]>
+<chapter>
+	
+	<title>Bitnami ownCloud Virtual Machine: Deploying the application</title>
+	<para>Thanks to the Bitnami ownCloud installer you can leave the ownCloud application deployed and ready quickly 
+	and easily without having the need for special programming skills in Linux.</para> 
+	<para>To deploy the application you need to comply with these requirements: </para>
+	
+	<note>
+		<title>Prerequisites</title>
+		<para>Docker Engine 1.1.0.0</para>
+		<para>Docker Compose 1.6.0 or later</para>
+	</note>
+	
+	<para>For this installation we are going to use <emphasis role="bold">Bitnami ownCloud Virtual Machine</emphasis> 
+	which has Docker and Docker Compose already installed.</para>
+	<para>These are the steps which must be taken to install the requirements and deploy the application:</para>
+	
+	<orderedlist numeration="arabic">
+		<listitem>
+			<para><emphasis>Import the Bitnami Virtual Machine into your hypervisor:</emphasis>
+			It is compatible with Oracle VirtualBox and VMware vSphere, Workstation, and Fusion. </para>
+		</listitem>
+		<listitem>
+			<para><emphasis>Start the server and check its IP Address:</emphasis> this IP will be the IP of your ownCloud environment.</para>
+		</listitem>
+		<listitem>
+			<para><emphasis>Add the IP Address and a sample host in your local machine:</emphasis> 
+			thus the Docker container can talk with your local host.</para>
+		</listitem>
+		<listitem>
+			<para><emphasis>Clone the bitnami-docker-ownCloud repository:</emphasis> in order to get both Docker Compose Tool, 
+			Docker compose file, ownCloud image and its requirements.</para>
+		</listitem>
+		<listitem>
+			<para><emphasis>Configure environment variables:</emphasis> 
+			adding the IP Address in your Docker Compose file as envronment variable.</para>
+		</listitem>
+	    <listitem>
+			<para><emphasis>Run the Docker containers:</emphasis> this step starts the creation of the containers and the 
+			installation of the database, application and its requirements. </para>
+		</listitem>
+		<listitem>
+			<para><emphasis>Access to your application:</emphasis> go to your browser and access 
+			to your ownCloud application through the URL of the sample host or IP Address you have added in Step 3.</para>
+		</listitem>
+	</orderedlist>
+	
+	<para><emphasis role="bold">The commands</emphasis> will be use for deploying the application are: <command>git</command>,
+	<command>docker</command> and <command>docker-compose</command>.</para>
+	
+	<section>
+		
+		<title>Importing Bitnami Virtual Machine</title>
+		<para> The first step is importing Bitnami Virtual Machine in your hypervisor in order to execute the commands required for the 
+		application deployment.</para>
+		<para>Start the Virtual Machine importation by selecting <literal>File->Import Service Virtualization</literal> then browse in your 
+		local folders to find the Bitnami Virtual Machine file. Follow the steps of the wizard.</para>
+		
+		<mediaobject>
+			<imageobject>
+				<imagedata scalefit="1" align="center" width="350" fileref="images/ch02_img001.png"/>
+			</imageobject>
+				<caption>
+				<para>Importing virtual disk image</para>
+			</caption>
+		</mediaobject>
+		
+		<warning>
+			<title>Warning</title>
+			<para>Check out your network preferences in your machine in order to ensure that you have 
+			the Ethernet network interfaces required (Adapter 1).</para>
+		</warning>
+		
+		<para>Once you have import your virtual machine you will be able to start it.</para>
+		
+		<mediaobject>
+			<imageobject>
+				<imagedata scalefit="1" align="center" width="350" fileref="images/ch02_img002.png"/>
+			</imageobject>
+				<caption>
+				<para>Imported Virtual Machine</para>
+			</caption>
+		</mediaobject>
+		
+	</section>
+	
+	<section>
+		
+		<title>Starting the server: check the IP Address</title>
+		<para>Now you can start the server. Choose the Ubuntu OS selected by default, once the server is running you can access to the Bitnami
+		Virtual Machine using the default user and password: bitnami/ bitnami.</para>
+		
+		<mediaobject>
+			<imageobject>
+				<imagedata scalefit="1" align="center" width="350" fileref="images/ch02_img02b.png"/>
+			</imageobject>
+				<caption>
+				<para>Starting the server</para>	
+			</caption>
+		</mediaobject>
+		
+		<mediaobject>
+			<imageobject>
+				<imagedata scalefit="1" align="center" width="350" fileref="images/ch02_img003.png"/>
+			</imageobject>
+				<caption>
+				<para>Introducing Ubuntu login</para>	
+			</caption>
+		</mediaobject>
+		
+		<para>Next step is <emphasis role="bold"> checking the IP Address</emphasis> of your localhost using the command 
+		<command>ifconfig eth0</command></para>
+		
+		<mediaobject>
+			<imageobject>
+				<imagedata scalefit="1" align="center" width="350" fileref="images/ch02_img004.png"/>
+			</imageobject>
+			<caption>
+			<para>ifconfig eth0: checking the IP Address</para>
+			</caption>
+		</mediaobject>
+		
+		<para>After that you must to add this IP Address into your local machine and a sample host. To do that you need to modify the 
+		hosts file. This file is located on the following route:</para>
+		<para><keycap>%SystemRoot%\System32\drivers\etc\hosts</keycap></para>
+		
+		<note>
+			<title>Note</title>
+			<para>Note that you must have Administrator privileges to modify and save the changes on hosts file. Simply right click 
+			in your notepad and select "Administrator" mode to open it. Then open hosts file from your notepad. 
+			</para>
+		</note>
+		
+		<para>Add in the last line your IP Address and your sample host. Save all the changes.</para>
+		<para><keycap>IP_address    test.com</keycap></para>
+		
+		<mediaobject>
+			<imageobject>
+				<imagedata scalefit="1" align="center" width="350" fileref="images/ch02_img005.png"/>
+			</imageobject>
+			<caption>
+			<para>Adding an IP Address and a sample host to your local machine</para>
+			</caption>
+		</mediaobject>
+		
+	</section>
+	
+	<section>
+		
+		<title>Cloning bitnami-docker-ownCloud repository</title>
+		<para>In order to get the packages required (latest ownCloud image and its requirements and MariaDB database) 
+		you must clone the bitnami-docker-ownCloud repository. </para>
+		<para>Execute the following command: <command>git clone https://github.com/bitnami/bitnami-docker-owncloud</command></para>
+		
+		<note>
+			<title>Tips</title>
+			<para>The up and down arrow keys allow you to see all the commands that you will need for this installation process</para>
+		</note>
+		
+		<mediaobject>
+			<imageobject>
+				<imagedata scalefit="1" align="center" width="350" fileref="images/ch02_img006.png"/>
+			</imageobject>
+			<caption>
+			<para>git clone: cloning the bitnami-docker-ownCloud repository</para>
+			</caption>
+		</mediaobject>
+		
+	</section>
+	
+	<section>
+		
+		<title>Configuring environment variables</title>
+		<para>For configuring environment variables you must modify the <keycap>docker-compose</keycap> file.</para>
+		<para>Execute <command>vi docker-compose.yml</command></para>
+		
+		<note>
+			<title>Tips</title>
+			<para>This file will be opened in Vim text editor. For insert a new line press <keycap>I</keycap>.</para>
+			<para>Once the enviroment has been added you can save the chanches pressing <keycap>Esc</keycap> and write <keycap>:wq</keycap></para>
+		</note>
+		
+		<para>For docker-compose add the variable name and value under the application section:</para>
+		
+		<para><command>
+			application:
+			  image: 'bitnami/owncloud:latest'
+              ports:
+                - '80:80'
+                - '443:443'
+              environment:
+                - 'OWNCLOUD_HOST=your_host'
+              volumes:
+                - 'owncloud_data:/bitnami/owncloud'
+                - 'apache_data:/bitnami/apache'
+                - 'php_data:/bitnami/php'
+		</command></para>
+		
+		<para>You can also copy this docker-compose file and add the variable name and value under the application section: 
+		<ulink url="https://github.com/bitnami/bitnami-docker-owncloud/blob/master/docker-compose.yml/"></ulink></para>
+		
+		<warning>
+			<title>Warning</title>
+			<para>In order to avoid possible issues we recommend to add the IP Address instead the sample host.</para>
+		</warning>
+		
+		<mediaobject>
+			<imageobject>
+				<imagedata scalefit="1" align="center" width="350" fileref="images/ch02_img008.png"/>
+			</imageobject>
+			<caption>
+			<para>Configuring environment variables: add the IP Address for your application</para>
+			</caption>
+		</mediaobject>	
+		
+	</section>
+	
+    <section>
+		
+		<title>Run the Docker containers</title>
+		<para>Once you´ve modified the docker-compose file you are able to run the containers. To do that simply execute the 
+		<command>docker-compose up</command> command.</para>
+		<para>Both containers one for MariaDB database and ownCloud application will be updated. Don´t perform any action during this 
+		process:</para>
+		
+		<mediaobject>
+			<imageobject>
+				<imagedata scalefit="1" align="center" width="350" fileref="images/ch02_img009.png"/>
+			</imageobject>
+			<caption>
+			<para>Running Docker containers: your containers are updated</para>
+			</caption>
+		</mediaobject>
+		
+		<para>If you want to run the containers manually, please, check the folowing links:</para> 
+		<para><ulink url="https://docs.docker.com/"></ulink></para>
+		<para><ulink url="https://github.com/bitnami/bitnami-docker-owncloud/"></ulink></para>	
+		
+    </section>
+    
+    <section>
+		
+		<title>Visiting your application</title>
+		<para>Now everything is ready for visiting you application introducing your IP Address (the same that you added both in
+		your hosts file and in docker-compose file as enviroment) in your browser.</para>
+		<para>You should see ownCloud login interface. You can access your application using the default user and password: 
+		<literal>user/ bitnami.</literal></para>
+		
+		<mediaobject>
+			<imageobject>
+				<imagedata scalefit="1" align="center" width="350" fileref="images/ch02_img010.png"/>
+			</imageobject>
+			<caption>
+			<para>Visiting your application</para>
+			</caption>
+		</mediaobject>
+		
+		<section>
+			
+			<title>Untrusted domains</title>
+			<para>Sometimes when you are trying to access the application, ownCloud identify it as an untrusted domain.</para>
+			
+			<mediaobject>
+				<imageobject>
+					<imagedata scalefit="1" align="center" width="350" fileref="images/ch02_img011.png"/>
+				</imageobject>
+				<caption>
+				<para>Visiting your application: ownCloud untrusted domain</para>
+				</caption>
+			</mediaobject>
+			
+		<para>You have two options for configuring your domain as a trusted domain for ownCloud:</para>
+		
+		<orderedlist numeration="arabic">
+			<listitem>
+				<para>Click the button <literal>Add IP_Adress as a trusted domain</literal> in the login interface.</para>
+			</listitem>
+			<listitem>
+				<para>Use <literal>bnconfig tool</literal> in your ownCloud installation.</para>
+				<para>Check out how to modify ownCloud the untrusted domains following the links below:</para>
+				<para><ulink url="https://wiki.bitnami.com/Applications/BitNami_ownCloud#How_to_modify_the_ownCloud_trusted_domains.3f/"></ulink></para>
+				<para><ulink url="https://doc.owncloud.org/server/7.0/admin_manual/configuration/config_sample_php_parameters.html#default-config-php-examples/"></ulink></para>
+			</listitem>
+		</orderedlist>
+		
+		</section>
+		
+    </section>
+    
+</chapter>

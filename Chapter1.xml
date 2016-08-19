@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+<!ENTITY % BOOK_ENTITIES SYSTEM "manual.ent">
+<!ENTITY PRODUCT "Documentation">
+<!ENTITY BOOKID "manual">
+<!ENTITY YEAR "2016">
+<!ENTITY HOLDER "Bitnami. |">
+]>
+<chapter>
+	
+<title>Quick installation guide for Bitnami ownCloud solution with Docker</title>
+	<para>This quick installation guide helps you to install ownCloud 9.1.0-1 with Docker. Docker is an open platform
+	using to deploy almost any kind of application separated from your infrastructure. Thus you can treat your application
+	as a managed infrastructure.</para>
+	
+	<section>
+		
+		<title>Architecture of the deployed solution</title>
+		<para><emphasis role="bold">ownCloud</emphasis> is an Open Source self-hosted file sync and share server. It is very similar to another platforms as Dropbox 
+		or NextCloud. 
+		You can view, sync and share your private files through a web interface, sync clients or WebDAV across devices easily.</para>
+		<para>It provides you the possibility to access all the data you care in a one place, completely free and without the need of a private server.</para>
+		<para><emphasis role="bold">Bitnami ownCloud Installer</emphasis> helps you to simplify the deployment and maintenance of ownCloud  application 
+		with Docker containers. In order to run the application, this solution deploy several containers using the 
+			<literal>Docker compose tool.</literal> 
+			These are the containers deployed by Bitnami solution:</para>
+			
+			<orderedlist numeration="arabic">
+				<listitem>
+					<para>
+						MariaDB Database
+					</para>
+				</listitem>
+				<listitem>
+					<para>
+						ownCloud application and its requirements: php data and apache data. 
+					</para>
+				</listitem>
+			</orderedlist>
+			
+			<para>Check out more information in: 
+			<ulink url="https://github.com/bitnami/bitnami-docker-owncloud/"></ulink></para>
+			
+			<section>
+				
+				<title>How Docker containers work?</title>
+				<para>A Docker container is very similar to a directory. A Docker container holds everything that is needed for 
+				an application to run. They are the <emphasis role="bold">run</emphasis> component of Docker.</para>
+				<para>Each container is created from a Docker image. The images are read-only templates with a series of layers.
+				These layers are one of the reasons why Docker is so lightweight. When you run a container a read-write layer is added on top
+				of  the image in which your application can run.</para>
+				<para>A container is <emphasis role="bold">an execution environment.</emphasis></para>
+				<para>The command that is used to create an run Docker container is <literal>docker-compose up.</literal></para>
+				<para>These are the actions involved when you run a Docker container: </para>
+			
+				<orderedlist numeration="arabic">
+					<listitem>
+						<para>
+							Pulls Ubuntu image: it checks for the presence of the Ubuntu image (it is already installed in 
+							Bitnami ownCloud Installer).
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							Create a new container: uses the image to create a container.
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							Allocates a filesystem and mounts the read-write layer.
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							Allocates a network interface: allowing the Docker container to talk to the local host.
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							Sets up an IP address: finds and attaches an available IP address.
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							Executes a process that you specify: run the application.
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							Captures an provides application output.
+						</para>
+				</listitem>
+			</orderedlist>
+			
+			<para>Find more information for understanding Docker´s internals at 
+			<ulink url="https://docs.docker.com/v1.8/introduction/understanding-docker/"></ulink></para>
+			<para><emphasis role="bold">Bitnami Owncloud installer</emphasis> includes both Docker installer and Owncloud latest image. It allows you to create and
+			run your containers faster, easier and more secure. </para>	
+			
+		</section>	
+	</section>
+
+	<section>
+		
+		<title>Getting Bitnami ownCloud Installer</title>
+		<para>
+		You have many possibilities to install Docker. It is compatible with the major desktop and 
+		Cloud platforms. Find in this link the ways to install Docker https://www.docker.com/products/overview
+		</para>
+		<para>
+		Bitami also provides you different ways to get the ownCloud installer:
+		<footnote><para>You can check all options following this link:
+		<ulink url="https://bitnami.com/stack/owncloud/"></ulink></para></footnote>
+		</para>
+		
+		<itemizedlist mark="bullet">
+			<listitem>
+				<para>
+				<emphasis>Local install:</emphasis>
+				</para>
+				<para>
+				-Bitnami ownCloud Linux Installer
+				</para>
+				<para>
+				-Bitnami ownCloud for OS X
+				</para>
+				<para>
+				-ownCloud Virtual Machines
+				</para>
+				<para>
+				-ownCloud Docker Container
+				</para>			
+			</listitem>
+			<listitem>
+				<para>
+					<emphasis>Launch in the Cloud</emphasis>
+				</para>
+			</listitem>
+			<listitem>
+				<para>
+					<emphasis>Demo in browser</emphasis>
+				</para>
+			</listitem>
+		</itemizedlist>
+		
+		<warning>
+			<title>Warning</title>
+			<para>Docker installer for Windows allows you to execute docker commands in this platform. 
+			The official tool only works in a specific Windows 10 version.</para>
+			<para><emphasis role="bold">Recommended installation for Windows 10:</emphasis> In order
+			to avoid issues select ownCloud Virtual Machine which has an Ubuntu 14.01 image already installed.</para>
+		</warning>
+		
+	</section>
+	
+	<section>
+		
+		<title>Downloading Bitnami ownCloud Virtual Machine</title>
+		<para>
+		This guide explains how to deploy ownCloud using a Virtual Machine with Ubuntu instead the local installation in 
+		<emphasis role="bold"> Windows 10 PC. </emphasis>
+		</para>
+		<para>
+		Bitnami Virtual Machine has docker and docker-compose already installed which enables you to deploy 
+		ownCloud with ease in very simple steps. 
+		You can get Bitnami ownCloud Virtual Machine following the link below:</para>
+		<para><ulink url="https://bitnami.com/stack/owncloud/virtual-machine/"></ulink></para>
+		
+	</section>
+		
+</chapter>

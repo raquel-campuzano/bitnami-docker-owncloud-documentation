@@ -1,0 +1,26 @@
+stages:
+  - linter
+  - build
+
+lint:
+  stage: linter
+  script:
+    - xmllint --postvalid --noout  **/Chapter*.xml
+  tags:
+    - xml-linter
+
+build:en:
+  stage: build
+  script:
+    - publican build --formats pdf --langs "en-US" --config publican-en-US.cfg
+    - mv tmp/en-US/pdf/*.pdf /documentation
+  tags:
+    - publican
+
+build:es:
+  stage: build
+  script:
+    - publican build --formats pdf --langs "es-ES" --config publican-es-ES.cfg
+    - mv tmp/es-ES/pdf/*.pdf /documentation
+  tags:
+    - publican

@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+<!ENTITY % BOOK_ENTITIES SYSTEM "manual.ent">
+<!ENTITY PRODUCT "Documentation">
+<!ENTITY BOOKID "manual">
+<!ENTITY YEAR "2016">
+<!ENTITY HOLDER "Bitnami. |">
+]>
+<chapter>
+	
+	<title>FAQ</title>
+	<section>
+		<title>Support and where can I get more info?</title>
+		
+		<itemizedlist mark="bullet">
+			<listitem>
+				<para>
+					Bitnami Community Support System: <ulink url="https://community.bitnami.com/"></ulink>
+				</para>
+			</listitem>
+			<listitem>
+				<para>
+					Bitnami Support page: <ulink url="https://bitnami.com/support/"></ulink>
+				</para>
+			</listitem>	
+		</itemizedlist>
+		
+		<para>Other useful resources</para>
+		
+		<itemizedlist mark="bullet">
+			<listitem>
+				<para>
+					Bitnami ownCloud Stack: <ulink url="https://bitnami.com/stack/owncloud/README.txt/"></ulink>
+				</para>
+			</listitem>
+			<listitem>
+				<para>
+					Bitnami ownCloud Virtual Machine: <ulink url="https://bitnami.com/stack/owncloud/virtual-machine/"></ulink>
+				</para>
+			</listitem>
+			<listitem>
+				<para>
+					GitHub bitnami-docker-ownCloud: <ulink url="https://github.com/bitnami/bitnami-docker-owncloud/"></ulink>
+				</para>
+			</listitem>
+			<listitem>
+				<para>
+					Bitnami Wiki: <ulink url="https://wiki.bitnami.com/Applications/BitNami_ownCloud#How_to_configure_ownCloud_Sync_Clients.3f/"></ulink>
+				</para>
+			</listitem>
+			<listitem>
+				<para>
+					Docker ownCloud Hub: <ulink url="https://hub.docker.com/_/owncloud/"></ulink>
+				</para>
+			</listitem>
+			<listitem>
+				<para>
+					Docker documentation: <ulink url="https://docs.docker.com/v1.8/introduction/understanding-docker/"></ulink>
+				</para>
+			</listitem>
+		</itemizedlist>
+		
+	</section>
+	
+	<section>
+		<title>Why use Docker instead a full virtualized machine?</title>
+		<para>With Docker you can create containers in which the application runs. 
+		The isolation and security of these containers allow you to run many containers simustaneously on your host 
+		getting more performace of your hardware.</para>
+
+		<para><emphasis role="bold">A full virtualized system</emphasis> gets its own set of resources allocated to it, 
+		and does minimal sharing. You get more isolation, but it is much heavier (requires more resources). </para>
+
+		<para>With <emphasis role="bold">Docker you get less isolation</emphasis>, but the containers are lightweight (require fewer resources). 
+		So you could easily run thousands of containers on a host, and it won't even blink. 
+		A full virtualized system usually takes minutes to start, 
+		whereas Docker containers take seconds, and often even less than a second.</para>
+	</section>
+	
+	<section>
+		<title>Upgrade the containers</title>
+		<para>bitnami ownCloud Installer includes up-to-date versions both MariaDB database and ownCloud. It also provides security parches
+		so the upgrading of the containers is highly recommended.</para>
+		
+		<section>
+			<title>Upgrading ownCloud container</title>
+			<para>We are going to describe the process for upgrading the containers with the <literal>docker-compose</literal> tool.</para>
+			
+			<orderedlist numeration="arabic">
+				<listitem>
+				<para>
+					Get the updated images: <screen>$ docker pull bitnami/owncloud:latest</screen>
+				</para>
+				</listitem>
+				<listitem>
+					<para>
+						Stop the container: <screen>$ docker-compose stop owncloud</screen>
+					</para>
+				</listitem>
+				<listitem>
+					<para>
+						Remove the currently running container: <screen> $ docker-compose rm -v owncloud</screen>
+					</para>
+				</listitem>
+				<listitem>
+					<para>
+						Run the new image:<screen>$ docker-compose start owncloud</screen>
+					</para>
+				</listitem>
+			</orderedlist>
+			
+			<warning>
+				<title>Warning</title>
+				<para>Create a backup <ulink url="https://github.com/bitnami/bitnami-docker-owncloud#backing-up-your-application/"></ulink>
+				 in case you don´t have mounted the owncloud folder in the host. </para>
+			</warning>
+		
+		</section>
+	
+		<section>
+			<title>Upgrading MariaDB container</title>
+			<para>We are going to describe the process for upgrading the containers with the <literal>docker-compose</literal> tool.</para>
+			
+			<orderedlist numeration="arabic">
+				<listitem>
+				<para>
+					Get the updated images: <screen>$ docker pull bitnami/mariadb:latest</screen>
+				</para>
+				</listitem>
+				<listitem>
+					<para>
+						Stop the container: <screen>$ docker-compose stop owncloud</screen>
+					</para>
+					<para>
+						<para>Create a backup <ulink url="https://github.com/bitnami/bitnami-docker-owncloud#backing-up-your-application/"></ulink>
+					in case you don´t have mounted the owncloud folder in the host. </para>
+					</para>
+				</listitem>
+				<listitem>
+					<para>
+						Remove the currently running container: <screen> docker-compose rm -v mariadb</screen>
+					</para>
+				</listitem>
+				<listitem>
+					<para>
+						Run the new image:<screen>$ docker-compose start mariadb</screen>
+					</para>
+				</listitem>
+			</orderedlist>
+		
+		</section>
+	
+	</section>
+	
+	<section>
+		<title>How to use a remote database instead the container one</title>
+		<para>For using a remote database you must configure your database hosts in <literal>config/config.php</literal> file.</para>
+		<para>Just add the hostname and credentials of your MySQL/MariaDB container. </para>
+		<para>
+			<screen>
+				mysql:
+				  build: docker-build-contexts/mysql
+                ports:
+                  - 3306
+                environment:
+                  - MYSQL_DATABASE=mydatabase
+                  - MYSQL_ROOT_PASSWORD=mypassword
+			</screen>
+		</para>
+	
+		<para>Open your database in the container: <screen>db-open mydatabase</screen></para>
+	</section>
+	
+	<section>
+		<title>Restoring bitnami-docker-ownCloud repository</title>
+		<para>Somentimes, you can overwrite the <literal>docker-compose.yml</literal> or you have some issues trying to run the container.</para>
+		<para>Follow these simple steps for restoring your bitnami-docker-ownCloud repository :</para>
+		<orderedlist numeration="arabic">
+			<listitem>
+				<para>Delete the folder: <screen>rm -rf bitnami-docker-owncloud/ </screen></para>
+			</listitem>
+			<listitem>
+				<para>Clone the repository: Execute the following command: 
+				<screen>git clone https://github.com/bitnami/bitnami-docker-owncloud</screen></para>
+			</listitem>
+			<listitem>
+				<para>Add the environment variables in: <literal>docker-compose.yml</literal> or copy the file:</para>
+				<para>
+					<screen>
+					version: '2'
+						services:
+						  mariadb:
+							image: 'bitnami/mariadb:latest'
+							volumes:
+							  - 'mariadb_data:/bitnami/mariadb'
+						  application:
+							image: 'bitnami/owncloud:latest'
+							ports:
+							  - '80:80'
+							  - '443:443'
+							environment:
+							  - 'OWNCLOUD_HOST=your_host'
+							volumes:
+							  - 'owncloud_data:/bitnami/owncloud'
+							  - 'apache_data:/bitnami/apache'
+							  - 'php_data:/bitnami/php'
+							depends_on:
+							  - mariadb
+						volumes:
+						  mariadb_data:
+							driver: local
+						  owncloud_data:
+							driver: local
+						  apache_data:
+							driver: local
+						  php_data:
+							driver: local
+    
+                        </screen>
+				</para>
+			</listitem>
+			<listitem>
+				<para>Run again the containers with <screen>docker-compose up</screen></para>
+			</listitem>
+		</orderedlist>
+	</section>
+	
+	<section>
+		<title>How can I restart the Docker daemon?</title>
+		<para>When the Docker service is down the most recommended action is run again the docker daemon. To do that, 
+		execute this following command:</para>
+		<para><screen>sudo /etc/init.d/docker restart</screen></para>
+	</section>
+	
+	<section>
+		<title>IP Address configuration doesn´t work: cleaning the environment</title>
+		<para>In order to solve some issues (IP Address conflicts , docker-compose file corrupted or deleted, etc.) cleaning your current 
+		docker volumes and images is highly recommended. Execute the following commands:</para>
+	
+		<para><screen>docker ps -aq | xargs docker stop</screen></para>
+		<para><screen>docker ps -aq | xargs docker rm</screen></para>
+		<para><screen>docker images -q | xargs docker rmi</screen></para>
+		<para><screen>docker volume rm $(docker volume ls -qf dangling=true)</screen></para>
+		
+		<para> Edit the docker-compose.yml and add the IP address as enviroment variable.</para>
+		<para> Run docker-compose up</para>
+		<para> Go to your browser and try to access at http://IP_Address</para>
+	</section>
+</chapter>

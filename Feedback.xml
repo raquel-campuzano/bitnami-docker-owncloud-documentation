@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+    <section>
+		<title>We want to know your opinion</title>
+		<para>If you find any errors in this manual, we are happy to receive your suggestions. If you detect a typographical or conceptual error you can send it to us by email with the following information from the manual:</para>  
+        <para>Manual's identifier: <emphasis> bitnami-docker-owncloud_v.0</emphasis>, chapter or section and page number in which there is an error, and the part of text that contains that error.</para>
+        <para>This information allows us to easily locate the error and correct it in order to improve the documentation accompanying our products.</para>
+        <para>We also appreciate any suggestions regarding the organization of information so we can optimize our manuals.</para>
+        <para>Always check the latest version of the documentation available at http://support.redborder.net</para>
+        <para>You can send your comments fiiling this contact form <ulink url="https://bitnami.com/contact/"></ulink></para>
+        <important>
+			<title>Bitnami</title>
+			<address>
+				<street>650 Mission St, 3rd Floor</street>
+				<city>San Francisco</city>
+                <state>California</state>
+                <postcode>94105</postcode>
+                <country>United States</country>
+            </address>
+        </important>
+    </section>
